@@ -4,18 +4,20 @@ import pytest
 
 from python_testing_research.day_ahead_market import DayAheadMarket, is_price_data_valid
 
+
 @pytest.mark.parametrize('dummy_price_data, expected',
                          [
                              (pd.Series([1, 2, 3]), True),
                              (pd.Series([1, 2, 1001]), False),
-                          ])
+                         ])
 def test_is_price_data_valid(dummy_price_data, expected):
     assert is_price_data_valid(dummy_price_data) == expected
+
 
 def test_market_simulates_without_failing():
     # Smoke test
     dummy_price_data = pd.Series(index=pd.date_range(start='2021-01-01 10:00', periods=100, freq='900s'),
-                           data=1)
+                                 data=1)
     market = DayAheadMarket(dummy_price_data)
     market.reset()
     for i in range(len(dummy_price_data)):
@@ -24,7 +26,8 @@ def test_market_simulates_without_failing():
             market.send_day_ahead_trades(np.ones(24))
     assert True
 
-def test_market_handles_trading_correctly():
+
+def test_market_clears_correctly():
     # Loop though time (use `step()`); Send trades to the market: Check if it clears and if the trade data is stored in
     # the market
 

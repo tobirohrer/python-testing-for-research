@@ -3,6 +3,7 @@ import pandas as pd
 
 from python_testing_research.day_ahead_market import DayAheadMarket
 
+
 def create_dummy_price_series(start="2026-01-01") -> pd.Series:
     periods = 24 * 365
 
@@ -12,6 +13,7 @@ def create_dummy_price_series(start="2026-01-01") -> pd.Series:
     values = np.tile(pattern, periods // len(pattern))
 
     return pd.Series(values, index=index)
+
 
 if __name__ == '__main__':
     dummy_price_data = create_dummy_price_series()

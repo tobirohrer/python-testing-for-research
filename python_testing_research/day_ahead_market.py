@@ -3,10 +3,11 @@ import pandas as pd
 
 from datetime import date
 
+
 class DayAheadMarket:
     def __init__(self,
-                 price_data: pd.Series,):
-        self.cleared_trades = pd.Series(dtype=float, index=pd.DatetimeIndex([], freq=None))
+                 price_data: pd.Series, ):
+        self._cleared_trades = pd.Series(dtype=float, index=pd.DatetimeIndex([], freq=None))
         self._tomorrows_trades = np.zeros(24)
         self.time = None
         self.price_data = price_data
@@ -35,8 +36,8 @@ class DayAheadMarket:
     def get_cleared_trades(self, date: date) -> pd.Series:
         ts = pd.Timestamp(date)
 
-        day_data = self.cleared_trades[
-            self.cleared_trades.index.normalize() == ts
+        day_data = self._cleared_trades[
+            self._cleared_trades.index.normalize() == ts
             ]
 
         return day_data
@@ -49,7 +50,7 @@ class DayAheadMarket:
             freq="h",
         )
         new_trades = pd.Series(self._tomorrows_trades, index=hourly_index, dtype=float)
-        self.cleared_trades = pd.concat([self.cleared_trades, new_trades])
+        self._cleared_trades = pd.concat([self._cleared_trades, new_trades])
         self._tomorrows_trades = np.zeros(24)
 
     def calculate_revenue(self) -> float:
