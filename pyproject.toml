@@ -9,5 +9,8 @@ readme = "README.md"
 requires-python = ">=3.8"
 dependencies = ["pytest", "pandas"]
 
-[tool.setuptools]
-packages = ["python_testing_research"]
+[tool.setuptools.packages.find]
+include = ["python_testing_research*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
