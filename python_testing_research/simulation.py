@@ -6,7 +6,7 @@ from python_testing_research.battery import Battery
 from python_testing_research.controller import SelfConsumptionController
 
 
-def _generate_data_profile(
+def generate_data_profile(
     start: str = "2026-06-01",
     hours: int = 24,
     constant_load_kwh: float = 1,
@@ -43,6 +43,9 @@ def run_simulation(
     battery: Battery,
     controller: SelfConsumptionController,
 ) -> pd.DataFrame:
+    """
+    Runs a time step simulation of a self-consumption controller with a battery and a load profile.
+    """
     result = profile.copy()
     battery_controls = []
     battery_state_of_charge_kwh = []
@@ -71,7 +74,7 @@ def run_simulation(
 
 
 if __name__ == "__main__":
-    data = _generate_data_profile()
+    data = generate_data_profile()
     battery = Battery(capacity_kwh=20, initial_state_of_charge_kwh=10)
     controller = SelfConsumptionController()
     result = run_simulation(
