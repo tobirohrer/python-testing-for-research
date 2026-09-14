@@ -1,13 +1,15 @@
 # Python Testing for Research
 
-A beginner-friendly workshop on Python testing tailored to academic and research code.  
+A (hopefully) beginner-friendly workshop about Python testing tailored to academic and research code. 
+The workshop will be held at [DACH+ Linz](https://energy-informatics2026.org/) and [OpenMod Freiburg 2026](https://forum.openmod.org/t/openmod-workshop-freiburg-2026-schedule-program/5955).
 
 ## Setup
 
-1. Clone Repo
-2. Recommended: Create a virtual Python or conda environment (and activate it)
-3. Install package with `python -m pip install -e .` (don't forget the `-e`: it is important!)
-4. Test the installation with `python -m pytest tests` in the project root.
+1. Fork this repo
+2. Clone your fork
+3. Recommended: Create a virtual Python or conda environment (and activate it)
+4. Install package with `python -m pip install -e .` (don't forget the `-e`: it is important!)
+5. Test the installation with `python -m pytest tests` in the project root. If you see passing tests you are good to go ;-)
 
 ## Example Simulation
 
