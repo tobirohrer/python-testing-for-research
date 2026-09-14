@@ -31,4 +31,6 @@ def _calculate_state_of_charge(
     amount_kwh: float,
     capacity_kwh: float,
 ) -> float:
-    return min(max(previous_state_of_charge_kwh - amount_kwh, 0), capacity_kwh)
+    soc = min(max(previous_state_of_charge_kwh - amount_kwh, 0), capacity_kwh)
+    assert capacity_kwh >= soc >= 0, "State of Charge reached which is not possible"
+    return soc
