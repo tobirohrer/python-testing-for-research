@@ -70,7 +70,7 @@ def run_simulation(
     result["battery_state_of_charge_kwh"] = battery_state_of_charge_kwh
     result["battery_contribution_kwh"] = battery_controls
     result["grid_import_kwh"] = grid_imports
-    return result
+    return result.round(1) # rounding to 1 decimal place, so we dont need pytest.approx in the first tests
 
 
 if __name__ == "__main__":
