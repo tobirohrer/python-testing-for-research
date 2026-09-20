@@ -14,7 +14,7 @@ def test_one_day_is_self_sufficient_with_a_large_battery():
     # Act
     result = run_simulation(data, battery, controller)
     
-    assert result["grid_import_kwh"].tolist() == pytest.approx([0] * 24, abs=1e-6)
+    assert result["grid_import_kwh"].tolist() == [0] * 24
 
 
 def test_results_did_not_change():
