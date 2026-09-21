@@ -17,13 +17,14 @@ def test_charge():
     # ToDo: Check if charging "worked"
     pass
 
+
 @pytest.mark.parametrize("input_a, expected", 
                          [
                             (-1, 1),
                             (0, 0),
                             # ...
                          ])
-def test_charge_with_edge_cases(innput_a, expected):
+def test_charge_with_edge_cases(input_a, expected):
     # Try Out Session 2
     # First, this is not a nice name for the test ;)
     # Test if charge operation works correctly by defining additional edge cases
